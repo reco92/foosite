@@ -1,0 +1,56 @@
+#descomentar loginForm y login_view para que funciones
+<html>
+<head>
+<title>Foodsite </title>
+</head>
+<body>
+<h1>Login</h1>
+{% if info_enviado %}
+	{% if login_correcto %}
+	<h3>Bienvenido {{ usuario}}</h3>
+	{% else %}
+		<h3>Usuario o password incorrecto</h3>
+		<form action="." method="POST">	
+			{% csrf_token %}
+			{{formulario.as_p}}
+			<input type="submit" value="Ingresar">
+		</form>
+	{% endif %}
+{% else %}
+<form action="." method="POST">	
+	{% csrf_token %}
+	{{formulario.as_p}}
+	<input type="submit" value="Ingresar">
+</form>
+{% endif %}
+</body>
+</html>
+
+<html>
+<head>
+<title>Foodsite </title>
+</head>
+<body>
+<h1>Registro de Cliente de Foodsite</h1>
+
+{% if info_enviado %}
+	{% if usuario_repetido%}
+		<h3> Usuario repetido</h3>
+		<form action="." method="POST">	
+			{% csrf_token %}
+			{{formulario.as_p}}
+			<input type="submit" value="registrase">
+		</form>
+	{% else %}
+		Gracias por registrase en Foodsite
+		<p>Su usuario es: {{usuario}}</p>	
+		{% endif%}	
+{% else %}
+	<form action="." method="POST">	
+		{% csrf_token %}
+		{{formulario.as_p}}
+		<input type="submit" value="registrase">
+	</form>
+{% endif %}
+</body>
+</html>

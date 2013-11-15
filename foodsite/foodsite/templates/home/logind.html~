@@ -1,0 +1,27 @@
+#descomentar loginForm y login_view para que funciones
+<html>
+<head>
+<title>Foodsite </title>
+</head>
+<body>
+<h1>Login</h1>
+{% if info_enviado %}
+	{% if login_correcto %}
+	<h3>Bienvenido {{ usuario}}</h3>
+	{% else %}
+		<h3>Usuario o password incorrecto</h3>
+		<form action="." method="POST">	
+			{% csrf_token %}
+			{{formulario.as_p}}
+			<input type="submit" value="Ingresar">
+		</form>
+	{% endif %}
+{% else %}
+<form action="." method="POST">	
+	{% csrf_token %}
+	{{formulario.as_p}}
+	<input type="submit" value="Ingresar">
+</form>
+{% endif %}
+</body>
+</html>

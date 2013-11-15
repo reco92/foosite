@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Foodsite</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/slider.css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <script src="/static/js/jquery-1.7.min.js"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/tms-0.4.1.js"></script>
+    <script>
+		$(document).ready(function(){				   	
+			$('.slider')._TMS({
+				show:0,
+				pauseOnHover:true,
+				prevBu:false,
+				nextBu:false,
+				playBu:false,
+				duration:700,
+				preset:'fade',
+				pagination:true,
+				pagNums:false,
+				slideshow:8000,
+				numStatus:false,
+				banners:false,
+				waitBannerAnimation:false,
+				progressBar:false
+			})		
+		});
+	</script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100//static/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="js/html5.js"></script>
+    	<link rel="stylesheet" type="text//static/css" media="screen" href="/static/css/ie./static/css">
+	<![endif]-->
+</head>
+<body>
+<div class="bg-top">
+<div class="bgr">
+  <!--==============================header=================================-->
+    <header>
+        <h1><a href="{% url vista_principal %}"><img src="/static/images/logo.jpg" alt=""></a></h1>
+        {% if user.is_authenticated %}
+        		<h5 align ="right"><strong><a href="{% url vista_logout %}" class="link-1">logout</a></strong></h5>
+        {% else %}
+        		<h5 align ="right"><strong><a href="{% url vista_login %}" class="link-1">login</a></strong></h5>
+        {% endif %}
+        <nav>  
+            <ul class="menu" align="center">
+                <li class="current"><a href="{% url vista_principal %}">Principal</a></li>
+                <li><a href="{% url vista_nosotros %}">Nosotros</a></li>
+                <li><a href="{% url vista_menu %}">Menu</a></li>
+                <li><a href="{% url vista_restaurantes %}">Restaurantes</a></li>
+                {% if user.is_authenticated %}
+        				<h5 align ="right"><strong><a href="{% url vista_opciones_cliente %}" class="link-1">Opciones</a></strong></h5>
+        			 {% else %}
+        				<li><a href="{% url vista_registro %}">Registro</a></li>
+        			 {% endif %}
+            </ul>
+            <div class="clear"></div>
+         </nav>
+        <div id="slide">		
+            <div class="slider">
+                <ul class="items">
+                    <li><img src="/static/images/slider-1.jpg" alt="" /></li>
+                    <li><img src="/static/images/slider-2.jpg" alt="" /></li>
+                    <li><img src="/static/images/slider-3.jpg" alt="" /></li>
+                </ul>
+          </div>
+      </div> 
+    </header>  
+  <!--==============================content================================-->
+     <section id="content"><div class="ic"></div>
+       <div class="block-2 pad-2">
+        <div class="col-4">
+        	<h3 class="h3-line" align = "center">Nuestra Oferta del dia</h3>
+             <p class="top-2" align="center"> <span class="clr-1 it-bold"><h4 align="center">Foodsite presenta</h4></p>
+            <div class="img-border pad-3"><img src="/static/images/page3-img1.jpg" alt="" ></div>
+        </div>
+        <div class="col-video left-2">
+        	<h2 class="h2-line-3" align = "center">"El portal de comidas que esperabas"</h2>
+            <div class="wrap"><br/>
+              <iframe width="480" height="315" src="//www.youtube.com/embed/NUVkm5Gfsbk" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+       </div>
+       <div>
+		 <h4 align="right">Facebook<a href="http://www.facebook.com/pages/Foodsite/1403624523200720?ref=hl"><img  src="/static/images/facebook.png" alt="" height="40" width="40"></a>  </h4>
+       </div>
+       <div class="block-2 pad-1">
+       <div class="presentacion-1">
+        	<h2 class="h2-line">Los mejores Restaurantes	</h2>
+            <div class="box-1">
+            	<div class="img-border img-indent"><img src="/static/images/presentacion1.jpg" alt="" height="168" width="262"></div>
+                <div>
+                	<h4>
+                	<p align="center"> <strong>Quieres encontrar el local mas confortable para disfrutar tu comida?</strong></p>
+                	<p align="justify">"Te ofrecemos una lista de los mejores Restaurantes locales que cuentan con buenos servicios que te permitirán disfrutar tu comida."</p>
+                	</h4>  
+                </div>
+            </div>
+        </div>
+       <div class="presentacion-1">
+        	<h2 class="h2-line">Variedad de Menu</h2>
+            <div class="box-1">
+            	<div class="img-border img-indent"><img src="/static/images/presentacion2.jpg" alt="" height="168" width="262"></div>
+                <div>
+                	<h4>
+                	<p align="center"> <strong>Buscas los platillos mas delicios con la mejor zazon?</strong></p>
+                	<p align="justify">"Te ofrecemos diferentes opciones para que tengas una variedad selecta y disfrutes de lo mejor de cada Restaurant."</p>
+                	</h4>  
+                </div>
+            </div>
+        </div>
+		  <div class="presentacion-1">
+        	<h2 class="h2-line">Servicio Rapido</h2>
+            <div class="box-1">
+            	<div class="img-border img-indent"><img src="/static/images/presentacion3.jpg" alt="" height="168" width="262"></div>
+                <div>
+                	<h4>
+                	<p align="center"> <strong>Estas muy apurado y necesitas pedir comida para llevar o una ocasion especial?</strong></p>
+                	<p align="justify">"Pruebe nuestro sencillo servicio de Click-to-Order para tu restaurante favorito, luego pasaras a recoger tu pedido y despreocuparte del tiempo perdido en una cola."</p>
+                	</h4>  
+                </div>
+            </div>
+        </div>
+        <div class="presentacion-1">
+        	<h2 class="h2-line">Reservaciones</h2>
+            <div class="box-1">
+            	<div class="img-border img-indent"><img src="/static/images/presentacion4.jpg" alt="" height="168" width="262"	></div>
+                <div>
+                	<h4>
+                	<p align="center"> <strong>Tienes una ocasion especial y no sabes a que lugar acudir? </strong></p>
+                	<p align="justify">"Para esas ocasiones que crean momentos inolvidables te presentamos nuestro servicio de reserva de mesas, te permite reservar la mesa perfecta en el restaurante perfecto"</p>
+                	</h4>  
+                </div>
+            </div>
+        </div>    
+        </div>    
+             
+       <div class="clear"></div>
+       <div class="block-2 pad-1">
+        <div class="col-5">
+        	<h3 class="h3-line">Buscanos en:</h3>
+            <div class="wrap">
+            	<dl class="adr">
+                    <dt class="clr-3 it-bold">Foodsite</dt>
+                    <dd>Campus Campinia Paisajista s/n Quinta Vivanco<br>Barrio de San Lazaro, Arequipa</dd>
+                    <dd><span>Telephone:</span><strong class="clr-2">+51 54 605630</strong></dd>
+                    <dd><span>Email:</span><a href="#" class="link">re.gunner92@gmail.com</a></dd>
+                </dl>
+                <dl>
+                			<iframe width="425" height="217" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.es/maps?f=d&amp;source=s_d&amp;saddr=&amp;daddr=-16.390164,-71.536106&amp;hl=es-419&amp;geocode=&amp;sll=-16.391708,-71.534729&amp;sspn=0.012681,0.01929&amp;mra=mift&amp;mrsp=1&amp;sz=16&amp;ie=UTF8&amp;t=m&amp;ll=-16.391708,-71.534729&amp;spn=0.012681,0.01929&amp;output=embed"></iframe><br /><small><a href="https://maps.google.es/maps?f=d&amp;source=embed&amp;saddr=&amp;daddr=-16.390164,-71.536106&amp;hl=es-419&amp;geocode=&amp;sll=-16.391708,-71.534729&amp;sspn=0.012681,0.01929&amp;mra=mift&amp;mrsp=1&amp;sz=16&amp;ie=UTF8&amp;t=m&amp;ll=-16.391708,-71.534729&amp;spn=0.012681,0.01929" style="color:#0000FF;text-align:left">Ver mapa mas grande</a></small>
+                </dl>
+            </div>
+        </div>        
+        
+		  <div class="col-4 left-2">
+        	<h3 class="h3-line">Contactanos:</h3>
+            <form id="form" method="post" >
+              <fieldset>
+                <label><strong>Nombre:</strong><input type="text" value=""><strong class="clear"></strong></label>
+                <label><strong>Email:</strong><input type="text" value=""><strong class="clear"></strong></label>
+                <label><strong>Mensaje:</strong><textarea></textarea><strong class="clear"></strong></label>
+                <strong class="clear"></strong>
+                <div class="btns"><a href="#" class="link">clear</a><a href="#" class="link" onClick="document.getElementById('form').submit()">send</a></div>
+              </fieldset>  
+            </form> 
+        </div>
+       </div>
+    </section> 
+
+<!--==============================footer=================================-->
+  <footer>
+      <p>2013</p> 
+  </footer>	 
+</div> 
+</div>       
+</body>
+</html>

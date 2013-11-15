@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Foodsite</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <script src="/static/js/jquery-1.7.min.js"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="js/html5.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+	<![endif]-->
+</head>
+s<body>
+<div class="bg-top">
+<div class="bgr">
+  <!--==============================header=================================-->
+    <header>
+        <h1><a href="{% url vista_principal %}"><img src="/static/images/logo.jpg" alt=""></a></h1>
+        {% if user.is_authenticated %}
+        		<h5 align ="right"><strong><a href="{% url vista_logout %}" class="link-1">logout</a></strong></h5>
+        {% else %}
+        		<h5 align ="right"><strong><a href="{% url vista_login %}" class="link-1">login</a></strong></h5>
+        {% endif %}
+        <nav>  
+            <ul class="menu" align="center">
+                <li><a href="{% url vista_principal %}">Principal</a></li>
+                <li><a href="{% url vista_nosotros %}">Nosotros</a></li>
+                <li><a href="{% url vista_menu %}">Menú</a></li>
+                <li><a href="{% url vista_restaurantes %}">Restaurantes</a></li>
+                {% if user.is_authenticated %}
+        				<li class="current"><a href="{% url vista_opciones_cliente %}">Opciones</a></li>
+        			 {% else %}
+        				<li class="current"><a href="{% url vista_registro %}">Registro</a></li>
+        			 {% endif %}
+            </ul>
+            <div class="clear"></div>
+         </nav>
+      </div> 
+  <!--==============================content================================-->
+    <section id="content"><div class="ic"></div>
+    <div class="block-2 pad-1">
+    {% if tiene_reservas %}
+    <table width="100%">
+ 			<tr>
+				<td><h3><strong>Restaurante</strong></h3></td>
+				<td><h3><strong>Dia</strong></h3></td>
+				<td><h3><strong>Hora</strong></h3></td>
+				<td><h3><strong>Estado</strong></h3></td>
+ 			</tr>
+    	{% for reserva in reservas %}
+    		{% for rest in restaurantes %}
+    			{% if rest.id == reserva.id_restaurante_id %}
+    			<tr>
+					<td><h4>{{ rest.nombre }}</h4></td>
+					<td><h4>{{ reserva.dia }}</h4></td>
+					<td><h4>{{reserva.hora}}</h4></td>
+					<td>
+					<h4>
+					{% if reserva.status == 'p' %}
+					Por aceptar <img src="/static/images/procesando.gif">
+					{% elif reserva.status == 'a' %}
+					Reservado <img src="/static/images/aceptado.gif">
+					{% else %}
+					No Reservado <img src="/static/images/rechazado.gif">
+					{% endif %}
+					</h4>
+					</td>
+    			</tr>
+    			{% endif %}   		
+    		{% endfor %}
+    	{% endfor %}
+    	</table> 
+    {% else %}
+    	<h3 class="h2-line">Aun no ha realizado ninguna reserva</h3>
+    {% endif %}          
+    </section> 
+
+<!--==============================footer=================================-->
+  <footer>
+      <p>2013</p> 
+  </footer>	 
+</div> 
+</div>       
+</body>
+</html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>Foodsite</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/reset.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/slider.css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <script src="/static/js/jquery-1.7.min.js"></script>
+    <script src="/static/js/jquery.easing.1.3.js"></script>
+    <script src="/static/js/tms-0.4.1.js"></script>
+    <script>
+		$(document).ready(function(){				   	
+			$('.slider')._TMS({
+				show:0,
+				pauseOnHover:true,
+				prevBu:false,
+				nextBu:false,
+				playBu:false,
+				duration:700,
+				preset:'fade',
+				pagination:true,
+				pagNums:false,
+				slideshow:8000,
+				numStatus:false,
+				banners:false,
+				waitBannerAnimation:false,
+				progressBar:false
+			})		
+		});
+	</script>
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100//static/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script type="text/javascript" src="js/html5.js"></script>
+    	<link rel="stylesheet" type="text//static/css" media="screen" href="/static/css/ie./static/css">
+	<![endif]-->
+</head>
+<body>
+<div class="bg-top">
+<div class="bgr">
+  <!--==============================header=================================-->
+    <header>
+        <h1><a href="{% url vista_principal %}"><img src="/static/images/logo.jpg" alt=""></a></h1>
+        {% if user.is_authenticated %}
+        		<h5 align ="right"><strong><a href="{% url vista_logout %}" class="link-1">logout</a></strong></h5>
+        {% else %}
+        		<h5 align ="right"><strong><a href="{% url vista_login %}" class="link-1">login</a></strong></h5>
+        {% endif %}
+        <nav>  
+            <ul class="menu" align="center">
+                <li><a href="{% url vista_principal %}">Principal</a></li>
+                <li><a href="{% url vista_nosotros %}">Nosotros</a></li>
+                <li><a href="{% url vista_menu %}">Menú</a></li>
+                <li><a href="{% url vista_restaurantes %}">Restaurantes</a></li>
+                {% if user.is_authenticated %}
+        				<li class="current"><a href="{% url vista_opciones_cliente %}">Opciones</a></li>
+        			 {% else %}
+        				<li class="current"><a href="{% url vista_registro %}">Registro</a></li>
+        			 {% endif %}
+            </ul>
+            <div class="clear"></div>
+         </nav>
+      </div> 
+  <!--==============================content================================-->
+    <section id="content"> <div class="ic"></div>
+
+	<h3><strong>"{{usuario}} Estas son las opciones que te ofrecemos"</strong></h3><br>
+	<h5 align ="right"><strong><a href="{% url vista_platos %}" class="link-1">Hacer pedido</a></strong></h5><br>
+	<h5 align ="right"><strong><a href="{% url vista_reservacion %}" class="link-1">Hacer reservacion</a></strong></h5><br>
+	<h5 align ="right"><strong><a href="{% url vista_listado_platos %}" class="link-1">Revisar pedidos</a></strong></h5><br>
+	<h5 align ="right"><strong><a href="{% url vista_listado_reservaciones %}" class="link-1">Revisar reservaciones</a></strong></h5><br>
+	 
+  
+    </section> 
+
+<!--==============================footer=================================-->
+  <footer>
+      <p>2013</p> 
+  </footer>	 
+</div> 
+</div>       
+</body>
+</html>
